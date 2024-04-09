@@ -3,19 +3,18 @@ import java.util.LinkedList;
 
 public class Comando {
 
-    public void crearComando(LinkedList<String> casosA, LinkedList<String> ejecutables) throws IOException, InterruptedException {
+    public void crearComando(LinkedList<String> casosA, int ejecutable) throws IOException, InterruptedException {
         LinkedList<String> casos = casosA;
 
 
-        for(String f: ejecutables) {
             for(String e: casos)
             {
                 BufferedReader entrada = null;
                 BufferedWriter salida = null;
                 BufferedWriter salida2 = null;
                 BufferedWriter salida3 = null;
-                String bat = "C:\\Users\\Emmanuel\\Desktop\\H_Clinicas\\ArchivosBat\\testBat"+f+e+".bat";
-                String batCopy = "C:\\Users\\Emmanuel\\Desktop\\H_Clinicas\\ArchivosBat\\testBatCopy" +f+e+".bat";
+                String bat = "C:\\Users\\Emmanuel\\Desktop\\H_Clinicas\\ArchivosBat\\testBat"+ejecutable+e+".bat";
+                String batCopy = "C:\\Users\\Emmanuel\\Desktop\\H_Clinicas\\ArchivosBat\\testBatCopy" +ejecutable+e+".bat";
                 try
                 {
 
@@ -30,10 +29,10 @@ public class Comando {
                     }
 
                     salida2.write("cd C:\\Users\\Emmanuel\\Desktop\\H_Clinicas \n");
-                    salida2.write("hClinicas_"+f+".exe h_clinicas");
+                    salida2.write("hClinicas_"+ejecutable+".exe h_clinicas");
 
                     salida3.write("cd C:\\Users\\Emmanuel\\Desktop\\H_Clinicas \n");
-                    salida3.write("COPY hc_ordenado.out Resultados\\"+f+e+".txt");
+                    salida3.write("COPY hc_ordenado.out Resultados\\"+ejecutable+e+".txt");
 
                 }
                 finally {
@@ -57,7 +56,6 @@ public class Comando {
                 }
                 this.ejecutar(bat, batCopy);
             }
-        }
 
 
     }
